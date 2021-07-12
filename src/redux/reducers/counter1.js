@@ -1,3 +1,4 @@
+import { ADD, ADD_ASYNC_NUMBER, ADD_NUMBER, SUB, SUB2 } from "./actions/actionsType"
 
 const initialState = {
     counter: 0
@@ -5,18 +6,22 @@ const initialState = {
 
 export default function counter1(state = initialState, action) {
     switch (action.type) {
-        case 'ADD':
+        case ADD:
             return {
                 counter: state.counter + 1
             }
-        case 'SUB':
+        case SUB:
             return {
                 counter: state.counter - 1
             }      
-        case 'ADD_NUMBER':
+        case ADD_NUMBER:
             return {
                 counter: state.counter + action.payload
-            }
+            }   
+        case ADD_ASYNC_NUMBER:
+                return {
+                    counter: state.counter + action.payload
+                }
         default:
             return {...state}
     }
