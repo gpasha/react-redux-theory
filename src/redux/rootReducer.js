@@ -4,5 +4,20 @@ const initialState = {
 }
 
 export default function rootReducer(state = initialState, action) {
-  return state
+  switch (action.type) {
+    case 'ADD':
+      return {
+        counter: state.counter + 1
+      }
+    case 'SUB':
+      return {
+        counter: state.counter - 1
+      }      
+    case 'ADD_NUMBER':
+      return {
+        counter: state.counter + action.payload
+      }
+    default:
+      return {...state}
+  }
 }

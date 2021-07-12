@@ -11,6 +11,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('this.props:', this.props)
     return (
       <div className={'App'}>
         <h1>Счетчик <strong>{this.props.counter}</strong></h1>
@@ -18,18 +19,31 @@ class App extends Component {
         <hr/>
 
         <div className="Actions">
-          <button onClick={() => this.updateCounter(1)}>Добавить 1</button>
-          <button onClick={() => this.updateCounter(-1)}>Вычесть 1</button>
+          <button onClick={this.props.onAdd}>Добавить 1</button>
+          <button onClick={this.props.onSub}>Вычесть 1</button>
+        </div>
+
+        <div className="Actions">
+          <button onClick={() => this.props.onAddbNumber(10)}>Добавить 10</button>
+          <button onClick={() => this.props.onAddbNumber(-17)}>Вычесть 17</button>
         </div>
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
     counter: state.counter
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispath => {
+  return {
+    onAdd: () => dispath({type: 'ADD'}),
+    onSub: () => dispath({type: 'SUB'}),
+    onAddbNumber: (number) => dispath({type: 'ADD_NUMBER', payload: number})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
