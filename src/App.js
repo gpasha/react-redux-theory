@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import './App.scss'
 import Counter2 from './Counter2'
+import { add, addNumber, sub } from './redux/reducers/actions/actions'
 
 class App extends Component {
   
@@ -43,9 +44,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispath => {
   return {
-    onAdd: () => dispath({type: 'ADD'}),
-    onSub: () => dispath({type: 'SUB'}),
-    onAddbNumber: (number) => dispath({type: 'ADD_NUMBER', payload: number})
+    onAdd: () => dispath(add()),
+    onSub: () => dispath(sub()),
+    onAddbNumber: (number) => dispath(addNumber(number))
   }
 }
 
