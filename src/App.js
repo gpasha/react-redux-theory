@@ -5,9 +5,9 @@ import './App.scss'
 class App extends Component {
   
   updateCounter(value) {
-    // this.setState({
-    //   counter: this.state.counter + value
-    // })
+    this.setState({
+      counter: this.state.counter + value
+    })
   }
 
   render() {
